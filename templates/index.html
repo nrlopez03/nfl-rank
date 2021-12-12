@@ -1,9 +1,15 @@
 <html>
     <head>
+        <link href="/static/styles.css" rel="stylesheet">
         <title>Sample app</title>
     </head>
     <body>
         <h1>{{ title }}</h1>
         <h3>Create your own custom NFL rankings</h3>
+
+        <div class="slidecontainer">        
+            <p>Custom range slider:</p>
+            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+          </div>
     </body>
 </html>
