@@ -129,18 +129,32 @@
                     + parseInt(sackSlider.value) + parseInt(ypSlider.value) + parseInt(possessionSlider.value) 
                     + parseInt(penaltySlider.value) + parseInt(fdSlider.value) + parseInt(rushSlider.value)
                     + parseInt(passSlider.value) + parseInt(tySlider.value) + parseInt(turnoverSlider.value);
-                winOutput.innerHTML = (parseInt(winSlider.value)/totalSum)*100;
-                pointOutput.innerHTML = (parseInt(pointSlider.value)/totalSum)*100;
-                interceptionOutput.innerHTML = (parseInt(interceptionSlider.value)/totalSum)*100;
-                sackOutput.innerHTML = (parseInt(sackSlider.value)/totalSum)*100;
-                ypOutput.innerHTML = (parseInt(ypSlider.value)/totalSum)*100;
-                possessionOutput.innerHTML = (parseInt(possessionSlider.value)/totalSum)*100;
-                penaltyOutput.innerHTML = (parseInt(penaltySlider.value)/totalSum)*100;
-                fdOutput.innerHTML = (parseInt(fdSlider.value)/totalSum)*100;
-                rushOutput.innerHTML = (parseInt(rushSlider.value)/totalSum)*100;
-                passOutput.innerHTML = (parseInt(passSlider.value)/totalSum)*100;
-                tyOutput.innerHTML = (parseInt(tySlider.value)/totalSum)*100;
-                turnoverOutput.innerHTML = (parseInt(turnoverSlider.value)/totalSum)*100;
+                
+                var winWeight = (parseInt(winSlider.value)/totalSum)*100
+                var pointWeight = (parseInt(pointSlider.value)/totalSum)*100
+                var interceptionWeight = (parseInt(interceptionSlider.value)/totalSum)*100
+                var sackWeight = (parseInt(sackSlider.value)/totalSum)*100
+                var ypWeight = (parseInt(ypSlider.value)/totalSum)*100
+                var possessionWeight = (parseInt(possessionSlider.value)/totalSum)*100
+                var penaltyWeight = (parseInt(penaltySlider.value)/totalSum)*100
+                var fdWeight = (parseInt(fdSlider.value)/totalSum)*100
+                var rushWeight = (parseInt(rushSlider.value)/totalSum)*100
+                var passWeight = (parseInt(passSlider.value)/totalSum)*100
+                var tyWeight = (parseInt(tySlider.value)/totalSum)*100
+                var turnoverWeight = (parseInt(turnoverSlider.value)/totalSum)*100
+                
+                winOutput.innerHTML = winWeight;
+                pointOutput.innerHTML = pointWeight;
+                interceptionOutput.innerHTML = interceptionWeight;
+                sackOutput.innerHTML = sackWeight;
+                ypOutput.innerHTML = ypWeight;
+                possessionOutput.innerHTML = possessionWeight;
+                penaltyOutput.innerHTML = penaltyWeight;
+                fdOutput.innerHTML = fdWeight;
+                rushOutput.innerHTML = rushWeight;
+                passOutput.innerHTML = passWeight;
+                tyOutput.innerHTML = tyWeight;
+                turnoverOutput.innerHTML = turnoverWeight;
             }
             
         </script>
