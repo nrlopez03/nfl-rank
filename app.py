@@ -103,7 +103,6 @@ def homepage():
         
         rankPairs = {teamKeys[i]: rankValues[i] for i in range(len(teamKeys))}
         sortedRankPairs = {k: v for k, v in sorted(rankPairs.items(), key=lambda item: item[1], reverse=True)}
-        print(sortedRankPairs)
 
         teamKeys = list(sortedRankPairs.keys())
         rankValues = list(sortedRankPairs.values())
@@ -144,7 +143,6 @@ def homepage():
         
         rankPairs = {teamKeys[i]: rankValues[i] for i in range(len(teamKeys))}
         sortedRankPairs = {k: v for k, v in sorted(rankPairs.items(), key=lambda item: item[1], reverse=True)}
-        print(sortedRankPairs)
 
         teamKeys = list(sortedRankPairs.keys())
         rankValues = list(sortedRankPairs.values())
