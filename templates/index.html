@@ -7,21 +7,34 @@
         <h1 style="text-align:center">{{ title }}</h1>
         <h2 style="text-align:center">Create your own custom NFL rankings</h2>
 
+        <h3 style="text-align:center">Assign weightings to each factor:</h3>
         <div class="slidecontainer" style="width: 500px; margin:0 auto;">        
-            <p>Custom range slider:</p>
-            <input type="range" min="1" max="100" value="50" class="slider" id="Recency">
-            <input type="range" min="1" max="100" value="50" class="slider" id="Interception Differential">
-            <input type="range" min="1" max="100" value="50" class="slider" id="Sack Differential">
-            <input type="range" min="1" max="100" value="50" class="slider" id="Yards/Play Differential">
-            <input type="range" min="1" max="100" value="50" class="slider" id="Possession Differential">
-            <input type="range" min="1" max="100" value="50" class="slider" id="Penalty Differential">
-            <input type="range" min="1" max="100" value="50" class="slider" id="First Down Differential">
-            <input type="range" min="1" max="100" value="50" class="slider" id="Rush Differential">
-            <input type="range" min="1" max="100" value="50" class="slider" id="Pass Differential">
-            <input type="range" min="1" max="100" value="50" class="slider" id="Total Yards Differential">
-            <input type="range" min="1" max="100" value="50" class="slider" id="Turnover Differential">
-            <input type="range" min="1" max="100" value="50" class="slider" id="Win Differential">
-            <input type="range" min="1" max="100" value="50" class="slider" id="Point Differential">
+            <p>Recency:</p>
+            <input type="range" min="0" max="1" value="0" class="slider" id="Recency">
+            <p>Win Differential</p>
+            <input type="range" min="1" max="100" value="100" class="slider" id="Win Differential">
+            <p>Point Differential</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="Point Differential">
+            <p>Interception Differential:</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="Interception Differential">
+            <p>Sack Differential</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="Sack Differential">
+            <p>Yards/Play Differential</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="Yards/Play Differential">
+            <p>Possession Differential</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="Possession Differential">
+            <p>Penalty Differential</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="Penalty Differential">
+            <p>First Down Differential</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="First Down Differential">
+            <p>Rush Differential</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="Rush Differential">
+            <p>Pass Differential</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="Pass Differential">
+            <p>Total Yards Differential</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="Total Yards Differential">
+            <p>Turnover Differential</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="Turnover Differential">
         </div>
     </body>
 </html>
