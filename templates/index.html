@@ -2,6 +2,8 @@
     <head>
         <link href="/static/styles.css" rel="stylesheet">
 
+        <link href="/static/favicon.ico" rel="icon">
+
         <!-- graph framework provided by chart.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.1/chart.min.js" integrity="sha512-O2fWHvFel3xjQSi9FyzKXWLTvnom+lOYR/AUEThL/fbP4hv1Lo5LCFCGuTXBRyKC4K4DJldg5kxptkgXAzUpvA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         
@@ -181,7 +183,7 @@
             data: {
                 labels: {{  teamKeys |safe }},
                 datasets: [{
-                label: 'Times Reviewed',
+                label: 'Rating Value',
                     data:  {{  rankValues |safe }},
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
@@ -216,5 +218,8 @@
             }
         });
         </script>
+
+        <footer style="text-align:center; margin-top: 10px; margin-bottom: 10px">
+            Made by Nicholas Lopez and Elliot Chin</footer>
     </body>
 </html>
