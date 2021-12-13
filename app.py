@@ -102,9 +102,8 @@ def homepage():
                 rankValues.append(rating)
         
         rankPairs = {teamKeys[i]: rankValues[i] for i in range(len(teamKeys))}
-        print(rankPairs)
 
-        return render_template("index.html", title="NFL Rank")
+        return render_template("index.html", title="NFL Rank", teamKeys=teamKeys, rankValues=rankValues)
 
     else:
         return render_template("index.html", title="NFL Rank")

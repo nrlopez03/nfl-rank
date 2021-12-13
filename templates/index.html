@@ -2,6 +2,8 @@
     <head>
         <link href="/static/styles.css" rel="stylesheet">
 
+        <!-- graph framework provided by chart.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.1/chart.min.js" integrity="sha512-O2fWHvFel3xjQSi9FyzKXWLTvnom+lOYR/AUEThL/fbP4hv1Lo5LCFCGuTXBRyKC4K4DJldg5kxptkgXAzUpvA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         
         <title>NFL Rank</title>
     </head>
@@ -166,6 +168,53 @@
                 turnoverOutput.innerHTML = turnoverWeight;
             }
             
+        </script>
+
+                <!-- Graph of most recent artists, some graph design (text color, etc) altered -->
+        <canvas id="myChart" style="width:50%;" height="300"></canvas>
+        <!-- There is a known bug where a false error will be thrown when variables in JavaScript are called using Django, no effect on outcome -->
+        <script>
+        const ctx = document.getElementById('myChart').getContext('2d');
+        Chart.defaults.color = "#000000";
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{  teamKeys |safe }},
+                datasets: [{
+                label: 'Times Reviewed',
+                    data:  {{  rankValues |safe }},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
         </script>
     </body>
 </html>
