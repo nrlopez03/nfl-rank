@@ -108,10 +108,50 @@ def homepage():
         teamKeys = list(sortedRankPairs.keys())
         rankValues = list(sortedRankPairs.values())
 
-        return render_template("index.html", title="NFL Rank", teamKeys=teamKeys, rankValues=rankValues)
+        return render_template("index.html", title="NFL Rank", teamKeys=teamKeys, rankValues=rankValues, winSpot=winDif,
+            pointSpot = pointDif, interceptionSpot = interceptionDif, sackSpot = sackDif, ypSpot = ypDif, possessionSpot = possessionDif, 
+            penaltySpot = penaltyDif, fdSpot = fdDif, rushSpot = rushDif, passSpot = passDif, tySpot = tyDif, turnoverSpot = turnoverDif)
 
     else:
-        return render_template("index.html", title="NFL Rank")
+
+        winDif = 100
+
+        totalSum = winDif
+                
+        winWeight = (winDif/totalSum)
+
+        weightedWinY = [[z * winWeight for z in y] for y in winY]
+
+        sumY = [[i1+j1 for i1, j1 in zip(i,j)] for i, j in zip(weightedWinY, sumY)]
+
+        pResult = [[sum(a * b for a, b in zip(A_row, B_col))
+                        for B_col in zip(*sumY)]
+                                for A_row in xT]
+
+        pOverline = pResult
+
+        pOverline[len(pResult)-1] = [0]
+        
+        rankVector = [[sum(a * b for a, b in zip(A_row, B_col))
+                        for B_col in zip(*pOverline)]
+                                for A_row in mOverlineInv]
+
+        rankValues = []
+
+        for row in rankVector:
+            for rating in row:
+                rankValues.append(rating)
+        
+        rankPairs = {teamKeys[i]: rankValues[i] for i in range(len(teamKeys))}
+        sortedRankPairs = {k: v for k, v in sorted(rankPairs.items(), key=lambda item: item[1], reverse=True)}
+        print(sortedRankPairs)
+
+        teamKeys = list(sortedRankPairs.keys())
+        rankValues = list(sortedRankPairs.values())
+
+        return render_template("index.html", title="NFL Rank", teamKeys=teamKeys, rankValues=rankValues, winSpot=100,
+            pointSpot = 0, interceptionSpot = 0, sackSpot = 0, ypSpot = 0, possessionSpot = 0, penaltySpot = 0,
+            fdSpot = 0, rushSpot = 0, passSpot = 0, tySpot = 0, turnoverSpot = 0)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -16,32 +16,30 @@
         <h3 style="text-align:center">Assign weightings to each factor:</h3>
         <form action="/" method="post" id="sliderForm">
             <div class="slidecontainer" style="width: 500px; margin:0 auto;">        
-                <p>Recency:</p>
-                <input type="range" min="0" max="100" value="0" class="slider" id="Recency">
                 <p>Record: <span id="winWeight"></span>%</p>
-                <input type="range" min="1" max="100" value="100" class="slider" id="WinDif" name="WinDif">
+                <input type="range" min="1" max="100" value="{{  winSpot  }}" class="slider" id="WinDif" name="WinDif">
                 <p>Point Differential: <span id="pointWeight"></span>%</p>
-                <input type="range" min="0" max="100" value="0" class="slider" id="PointDif" name="PointDif">
+                <input type="range" min="0" max="100" value="{{  pointSpot  }}" class="slider" id="PointDif" name="PointDif">
                 <p>Interception Differential: <span id="interceptionWeight"></span>%</p>
-                <input type="range" min="0" max="100" value="0" class="slider" id="InterceptionDif" name="InterceptionDif">
+                <input type="range" min="0" max="100" value="{{  interceptionSpot  }}" class="slider" id="InterceptionDif" name="InterceptionDif">
                 <p>Sack Differential: <span id="sackWeight"></span>%</p>
-                <input type="range" min="0" max="100" value="0" class="slider" id="SackDif" name="SackDif">
+                <input type="range" min="0" max="100" value="{{  sackSpot  }}" class="slider" id="SackDif" name="SackDif">
                 <p>Yards/Play Differential: <span id="ypWeight"></span>%</p>
-                <input type="range" min="0" max="100" value="0" class="slider" id="YPDif" name="YPDif">
+                <input type="range" min="0" max="100" value="{{  ypSpot  }}" class="slider" id="YPDif" name="YPDif">
                 <p>Possession Differential: <span id="possessionWeight"></span>%</p>
-                <input type="range" min="0" max="100" value="0" class="slider" id="PossessionDif" name="PossessionDif">
+                <input type="range" min="0" max="100" value="{{  possessionSpot  }}" class="slider" id="PossessionDif" name="PossessionDif">
                 <p>Penalty Differential: <span id="penaltyWeight"></span>%</p>
-                <input type="range" min="0" max="100" value="0" class="slider" id="PenaltyDif" name="PenaltyDif">
+                <input type="range" min="0" max="100" value="{{  penaltySpot  }}" class="slider" id="PenaltyDif" name="PenaltyDif">
                 <p>First Down Differential: <span id="fdWeight"></span>%</p>
-                <input type="range" min="0" max="100" value="0" class="slider" id="FDDif" name="FDDif">
+                <input type="range" min="0" max="100" value="{{  fdSpot  }}" class="slider" id="FDDif" name="FDDif">
                 <p>Rush Differential: <span id="rushWeight"></span>%</p>
-                <input type="range" min="0" max="100" value="0" class="slider" id="RushDif" name="RushDif">
+                <input type="range" min="0" max="100" value="{{  rushSpot  }}" class="slider" id="RushDif" name="RushDif">
                 <p>Pass Differential: <span id="passWeight"></span>%</p>
-                <input type="range" min="0" max="100" value="0" class="slider" id="PassDif" name="PassDif">
+                <input type="range" min="0" max="100" value="{{  passSpot  }}" class="slider" id="PassDif" name="PassDif">
                 <p>Total Yards Differential: <span id="tyWeight"></span>%</p>
-                <input type="range" min="0" max="100" value="0" class="slider" id="TYDif" name="TYDif">
+                <input type="range" min="0" max="100" value="{{  tySpot  }}" class="slider" id="TYDif" name="TYDif">
                 <p>Turnover Differential: <span id="turnoverWeight"></span>%</p>
-                <input type="range" min="0" max="100" value="0" class="slider" id="TurnoverDif" name="TurnoverDif">
+                <input type="range" min="0" max="100" value="{{  turnoverSpot  }}" class="slider" id="TurnoverDif" name="TurnoverDif">
             </div>
             <div class="container" style = "margin-top: 10px">
                 <div class="center">
@@ -88,6 +86,8 @@
             passOutput.innerHTML = passSlider.value;
             tyOutput.innerHTML = tySlider.value;
             turnoverOutput.innerHTML = turnoverSlider.value;
+
+            updateWeights();
             
             winSlider.oninput = function() {
               updateWeights();
