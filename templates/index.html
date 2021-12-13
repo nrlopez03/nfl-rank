@@ -1,7 +1,7 @@
 <html>
     <head>
         <link href="/static/styles.css" rel="stylesheet">
-        <title>Sample app</title>
+        <title>NFL Rank</title>
     </head>
     <body>
         <h1 style="text-align:center">{{ title }}</h1>
@@ -10,31 +10,139 @@
         <h3 style="text-align:center">Assign weightings to each factor:</h3>
         <div class="slidecontainer" style="width: 500px; margin:0 auto;">        
             <p>Recency:</p>
-            <input type="range" min="0" max="1" value="0" class="slider" id="Recency">
-            <p>Win Differential</p>
-            <input type="range" min="1" max="100" value="100" class="slider" id="Win Differential">
-            <p>Point Differential</p>
-            <input type="range" min="0" max="100" value="0" class="slider" id="Point Differential">
-            <p>Interception Differential:</p>
-            <input type="range" min="0" max="100" value="0" class="slider" id="Interception Differential">
-            <p>Sack Differential</p>
-            <input type="range" min="0" max="100" value="0" class="slider" id="Sack Differential">
-            <p>Yards/Play Differential</p>
-            <input type="range" min="0" max="100" value="0" class="slider" id="Yards/Play Differential">
-            <p>Possession Differential</p>
-            <input type="range" min="0" max="100" value="0" class="slider" id="Possession Differential">
-            <p>Penalty Differential</p>
-            <input type="range" min="0" max="100" value="0" class="slider" id="Penalty Differential">
-            <p>First Down Differential</p>
-            <input type="range" min="0" max="100" value="0" class="slider" id="First Down Differential">
-            <p>Rush Differential</p>
-            <input type="range" min="0" max="100" value="0" class="slider" id="Rush Differential">
-            <p>Pass Differential</p>
-            <input type="range" min="0" max="100" value="0" class="slider" id="Pass Differential">
-            <p>Total Yards Differential</p>
-            <input type="range" min="0" max="100" value="0" class="slider" id="Total Yards Differential">
-            <p>Turnover Differential</p>
-            <input type="range" min="0" max="100" value="0" class="slider" id="Turnover Differential">
+            <input type="range" min="0" max="100" value="0" class="slider" id="Recency">
+            <p>Record: <span id="winWeight"></span>%</p>
+            <input type="range" min="1" max="100" value="100" class="slider" id="WinDif">
+            <p>Point Differential: <span id="pointWeight"></span>%</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="PointDif">
+            <p>Interception Differential: <span id="interceptionWeight"></span>%</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="InterceptionDif">
+            <p>Sack Differential: <span id="sackWeight"></span>%</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="SackDif">
+            <p>Yards/Play Differential: <span id="ypWeight"></span>%</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="YPDif">
+            <p>Possession Differential: <span id="possessionWeight"></span>%</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="PossessionDif">
+            <p>Penalty Differential: <span id="penaltyWeight"></span>%</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="PenaltyDif">
+            <p>First Down Differential: <span id="fdWeight"></span>%</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="FDDif">
+            <p>Rush Differential: <span id="rushWeight"></span>%</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="RushDif">
+            <p>Pass Differential: <span id="passWeight"></span>%</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="PassDif">
+            <p>Total Yards Differential: <span id="tyWeight"></span>%</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="TYDif">
+            <p>Turnover Differential: <span id="turnoverWeight"></span>%</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="TurnoverDif">
         </div>
+        <script>
+            var winSlider = document.getElementById("WinDif");
+            var pointSlider = document.getElementById("PointDif");
+            var interceptionSlider = document.getElementById("InterceptionDif");
+            var sackSlider = document.getElementById("SackDif");
+            var ypSlider = document.getElementById("YPDif");
+            var possessionSlider = document.getElementById("PossessionDif");
+            var penaltySlider = document.getElementById("PenaltyDif");
+            var fdSlider = document.getElementById("FDDif");
+            var rushSlider = document.getElementById("RushDif");
+            var passSlider = document.getElementById("PassDif");
+            var tySlider = document.getElementById("TYDif");
+            var turnoverSlider = document.getElementById("TurnoverDif");
+
+            var winOutput = document.getElementById("winWeight");
+            var pointOutput = document.getElementById("pointWeight");
+            var interceptionOutput = document.getElementById("interceptionWeight");
+            var sackOutput = document.getElementById("sackWeight");
+            var ypOutput = document.getElementById("ypWeight");
+            var possessionOutput = document.getElementById("possessionWeight");
+            var penaltyOutput = document.getElementById("penaltyWeight");
+            var fdOutput = document.getElementById("fdWeight");
+            var rushOutput = document.getElementById("rushWeight");
+            var passOutput = document.getElementById("passWeight");
+            var tyOutput = document.getElementById("tyWeight");
+            var turnoverOutput = document.getElementById("turnoverWeight");
+
+            winOutput.innerHTML = winSlider.value;
+            pointOutput.innerHTML = pointSlider.value;
+            interceptionOutput.innerHTML = interceptionSlider.value;
+            sackOutput.innerHTML = sackSlider.value;
+            ypOutput.innerHTML = ypSlider.value;
+            possessionOutput.innerHTML = possessionSlider.value;
+            penaltyOutput.innerHTML = penaltySlider.value;
+            fdOutput.innerHTML = fdSlider.value;
+            rushOutput.innerHTML = rushSlider.value;
+            passOutput.innerHTML = passSlider.value;
+            tyOutput.innerHTML = tySlider.value;
+            turnoverOutput.innerHTML = turnoverSlider.value;
+            
+            winSlider.oninput = function() {
+              updateWeights();
+            }
+
+            pointSlider.oninput = function() {
+              updateWeights()
+            }
+
+            interceptionSlider.oninput = function() {
+              updateWeights()
+            }
+
+            sackSlider.oninput = function() {
+              updateWeights()
+            }
+
+            ypSlider.oninput = function() {
+              updateWeights()
+            }
+
+            possessionSlider.oninput = function() {
+              updateWeights()
+            }
+
+            penaltySlider.oninput = function() {
+              updateWeights()
+            }
+
+            fdSlider.oninput = function() {
+              updateWeights()
+            }
+
+            rushSlider.oninput = function() {
+              updateWeights()
+            }
+
+            passSlider.oninput = function() {
+              updateWeights()
+            }
+
+            tySlider.oninput = function() {
+              updateWeights()
+            }
+
+            turnoverSlider.oninput = function() {
+              updateWeights()
+            }
+
+            function updateWeights(){
+                var totalSum = parseInt(winSlider.value) + parseInt(pointSlider.value) + parseInt(interceptionSlider.value) 
+                    + parseInt(sackSlider.value) + parseInt(ypSlider.value) + parseInt(possessionSlider.value) 
+                    + parseInt(penaltySlider.value) + parseInt(fdSlider.value) + parseInt(rushSlider.value)
+                    + parseInt(passSlider.value) + parseInt(tySlider.value) + parseInt(turnoverSlider.value);
+                winOutput.innerHTML = (parseInt(winSlider.value)/totalSum)*100;
+                pointOutput.innerHTML = (parseInt(pointSlider.value)/totalSum)*100;
+                interceptionOutput.innerHTML = (parseInt(interceptionSlider.value)/totalSum)*100;
+                sackOutput.innerHTML = (parseInt(sackSlider.value)/totalSum)*100;
+                ypOutput.innerHTML = (parseInt(ypSlider.value)/totalSum)*100;
+                possessionOutput.innerHTML = (parseInt(possessionSlider.value)/totalSum)*100;
+                penaltyOutput.innerHTML = (parseInt(penaltySlider.value)/totalSum)*100;
+                fdOutput.innerHTML = (parseInt(fdSlider.value)/totalSum)*100;
+                rushOutput.innerHTML = (parseInt(rushSlider.value)/totalSum)*100;
+                passOutput.innerHTML = (parseInt(passSlider.value)/totalSum)*100;
+                tyOutput.innerHTML = (parseInt(tySlider.value)/totalSum)*100;
+                turnoverOutput.innerHTML = (parseInt(turnoverSlider.value)/totalSum)*100;
+            }
+            
+        </script>
     </body>
 </html>
