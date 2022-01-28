@@ -16,6 +16,8 @@
         <h3 style="text-align:center">Assign weightings to each factor:</h3>
         <form action="/" method="post" id="sliderForm">
             <div class="slidecontainer" style="width: 500px; margin:0 auto;">        
+                <p>Recency: <span id="recencyWeight"></span>%</p>
+                <input type="range" min="0" max="100" value="{{  recencySpot  }}" class="slider" id="RecencyDif" name="RecencyDif">
                 <p>Record: <span id="winWeight"></span>%</p>
                 <input type="range" min="1" max="100" value="{{  winSpot  }}" class="slider" id="WinDif" name="WinDif">
                 <p>Point Differential: <span id="pointWeight"></span>%</p>
@@ -61,6 +63,8 @@
             var tySlider = document.getElementById("TYDif");
             var turnoverSlider = document.getElementById("TurnoverDif");
 
+            var recencySlider = document.getElementById("RecencyDif");
+
             var winOutput = document.getElementById("winWeight");
             var pointOutput = document.getElementById("pointWeight");
             var interceptionOutput = document.getElementById("interceptionWeight");
@@ -74,6 +78,8 @@
             var tyOutput = document.getElementById("tyWeight");
             var turnoverOutput = document.getElementById("turnoverWeight");
 
+            var recencyOutput = document.getElementById("recencyWeight");
+
             winOutput.innerHTML = winSlider.value;
             pointOutput.innerHTML = pointSlider.value;
             interceptionOutput.innerHTML = interceptionSlider.value;
@@ -86,6 +92,8 @@
             passOutput.innerHTML = passSlider.value;
             tyOutput.innerHTML = tySlider.value;
             turnoverOutput.innerHTML = turnoverSlider.value;
+
+            recencyOutput.innerHTML = recencySlider.value;
 
             updateWeights();
             
@@ -137,6 +145,10 @@
               updateWeights()
             }
 
+            recencySlider.oninput = function() {
+              updateWeights()
+            }
+
             function updateWeights(){
                 var totalSum = parseInt(winSlider.value) + parseInt(pointSlider.value) + parseInt(interceptionSlider.value) 
                     + parseInt(sackSlider.value) + parseInt(ypSlider.value) + parseInt(possessionSlider.value) 
@@ -155,6 +167,8 @@
                 var passWeight = (parseInt(passSlider.value)/totalSum)*100
                 var tyWeight = (parseInt(tySlider.value)/totalSum)*100
                 var turnoverWeight = (parseInt(turnoverSlider.value)/totalSum)*100
+
+                var recencyWeight = recencySlider.value
                 
                 winOutput.innerHTML = winWeight;
                 pointOutput.innerHTML = pointWeight;
@@ -168,6 +182,8 @@
                 passOutput.innerHTML = passWeight;
                 tyOutput.innerHTML = tyWeight;
                 turnoverOutput.innerHTML = turnoverWeight;
+
+                recencyOutput.innerHTML = recencyWeight;
             }
             
         </script>
