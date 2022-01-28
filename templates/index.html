@@ -19,7 +19,7 @@
                 <p>Recency: <span id="recencyWeight"></span>%</p>
                 <input type="range" min="0" max="100" value="{{  recencySpot  }}" class="slider" id="RecencyDif" name="RecencyDif">
                 <p>Record: <span id="winWeight"></span>%</p>
-                <input type="range" min="1" max="100" value="{{  winSpot  }}" class="slider" id="WinDif" name="WinDif">
+                <input type="range" min="0" max="100" value="{{  winSpot  }}" class="slider" id="WinDif" name="WinDif">
                 <p>Point Differential: <span id="pointWeight"></span>%</p>
                 <input type="range" min="0" max="100" value="{{  pointSpot  }}" class="slider" id="PointDif" name="PointDif">
                 <p>Interception Differential: <span id="interceptionWeight"></span>%</p>
@@ -153,9 +153,9 @@
                 var totalSum = parseInt(winSlider.value) + parseInt(pointSlider.value) + parseInt(interceptionSlider.value) 
                     + parseInt(sackSlider.value) + parseInt(ypSlider.value) + parseInt(possessionSlider.value) 
                     + parseInt(penaltySlider.value) + parseInt(fdSlider.value) + parseInt(rushSlider.value)
-                    + parseInt(passSlider.value) + parseInt(tySlider.value) + parseInt(turnoverSlider.value);
+                    + parseInt(passSlider.value) + parseInt(tySlider.value) + parseInt(turnoverSlider.value) + 0.00001;
                 
-                var winWeight = (parseInt(winSlider.value)/totalSum)*100
+                var winWeight = (parseInt(winSlider.value)/totalSum)*100 + 0.00001
                 var pointWeight = (parseInt(pointSlider.value)/totalSum)*100
                 var interceptionWeight = (parseInt(interceptionSlider.value)/totalSum)*100
                 var sackWeight = (parseInt(sackSlider.value)/totalSum)*100
@@ -170,18 +170,18 @@
 
                 var recencyWeight = recencySlider.value
                 
-                winOutput.innerHTML = Math.floor(winWeight);
-                pointOutput.innerHTML = Math.floor(pointWeight);
-                interceptionOutput.innerHTML = Math.floor(interceptionWeight);
-                sackOutput.innerHTML = Math.floor(sackWeight);
-                ypOutput.innerHTML = Math.floor(ypWeight);
-                possessionOutput.innerHTML = Math.floor(possessionWeight);
-                penaltyOutput.innerHTML = Math.floor(penaltyWeight);
-                fdOutput.innerHTML = Math.floor(fdWeight);
-                rushOutput.innerHTML = Math.floor(rushWeight);
-                passOutput.innerHTML = Math.floor(passWeight);
-                tyOutput.innerHTML = Math.floor(tyWeight);
-                turnoverOutput.innerHTML = Math.floor(turnoverWeight);
+                winOutput.innerHTML = Math.round(winWeight);
+                pointOutput.innerHTML = Math.round(pointWeight);
+                interceptionOutput.innerHTML = Math.round(interceptionWeight);
+                sackOutput.innerHTML = Math.round(sackWeight);
+                ypOutput.innerHTML = Math.round(ypWeight);
+                possessionOutput.innerHTML = Math.round(possessionWeight);
+                penaltyOutput.innerHTML = Math.round(penaltyWeight);
+                fdOutput.innerHTML = Math.round(fdWeight);
+                rushOutput.innerHTML = Math.round(rushWeight);
+                passOutput.innerHTML = Math.round(passWeight);
+                tyOutput.innerHTML = Math.round(tyWeight);
+                turnoverOutput.innerHTML = Math.round(turnoverWeight);
 
                 recencyOutput.innerHTML = recencyWeight;
             }

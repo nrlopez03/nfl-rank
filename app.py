@@ -45,6 +45,10 @@ def homepage():
 
         totalSum = (winDif + pointDif + interceptionDif + sackDif + ypDif + possessionDif  + penaltyDif 
             + fdDif + rushDif + passDif + tyDif + turnoverDif)
+
+        if totalSum == 0:
+            winWeight = 0.00001
+            totalSum = 0.00001
                 
         winWeight = (winDif/totalSum)
         pointWeight = (pointDif/totalSum)
